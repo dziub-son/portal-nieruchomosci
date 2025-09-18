@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}"></head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main class="container">
+    <div class="details-container">
+        <h1 th:text="${advertisement.title}">Tytuł Ogłoszenia</h1>
+        <img th:src="${advertisement.imageUrl}" alt="Zdjęcie nieruchomości" class="details-img">
+        <p class="price" th:text="${#numbers.formatDecimal(advertisement.price, 0, 'WHITESPACE', 2, 'COMMA')} + ' PLN'">Cena</p>
+        <p><strong>Lokalizacja:</strong> <span th:text="${advertisement.city}"></span></p>
+        <p><strong>Powierzchnia:</strong> <span th:text="${advertisement.area}"></span> m²</p>
+        <p><strong>Opis:</strong></p>
+        <p th:text="${advertisement.description}">Długi opis nieruchomości.</p>
+
+        <button id="showContactBtn" onclick="showContact()">Pokaż kontakt</button>
+        <p id="contactInfo" style="display:none;">
+            <strong>Telefon:</strong> <span th:text="${advertisement.phoneNumber}"></span><br>
+            <strong>Wystawiający:</strong> <span th:text="${advertisement.author.username}"></span>
+        </p>
+    </div>
+
+    <script>
+        function showContact() {
+            document.getElementById('contactInfo').style.display = 'block';
+            document.getElementById('showContactBtn').style.display = 'none';
+        }
+    </script>
+</main>
+</body>
+</html>

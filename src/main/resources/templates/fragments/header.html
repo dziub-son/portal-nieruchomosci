@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Nieruchomości</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:fragment="header">
+    <nav>
+        <a th:href="@{/ogloszenia}">Strona Główna</a>
+        <a th:href="@{/kalkulator}">Kalkulator Kredytowy</a>
+        <a th:href="@{/admin}" sec:authorize="hasAuthority('ADMIN')">Panel Admina</a>
+
+        <div class="user-actions">
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Logowanie</a>
+                <a th:href="@{/register}">Rejestracja</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/dodaj-ogloszenie}">Dodaj Ogłoszenie</a>
+                <span>Witaj, <span sec:authentication="name"></span></span>
+                <a th:href="@{/logout}">Wyloguj</a>
+            </div>
+        </div>
+    </nav>
+</header>
+</body>
+</html>

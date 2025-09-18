@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}"></head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main class="container">
+    <h1>Najnowsze Ogłoszenia</h1>
+    <div class="advert-list">
+        <div th:each="ad : ${advertisements}" class="advert-card">
+            <img th:src="${ad.imageUrl}" alt="Zdjęcie nieruchomości" class="advert-img">
+            <h3 th:text="${ad.title}">Tytuł Ogłoszenia</h3>
+            <p class="price" th:text="${#numbers.formatDecimal(ad.price, 0, 'WHITESPACE', 2, 'COMMA')} + ' PLN'">Cena</p>
+            <p th:text="${ad.city}">Miasto</p>
+            <a th:href="@{/ogloszenia/{id}(id=${ad.id})}" class="btn">Zobacz szczegóły</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

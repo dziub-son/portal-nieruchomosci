@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}"></head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main class="container">
+    <h2>Kalkulator Raty Kredytowej</h2>
+    <form th:action="@{/kalkulator}" method="post" class="form-styled">
+        <div>
+            <label for="kwota">Kwota kredytu (PLN):</label>
+            <input type="number" id="kwota" name="kwota" required>
+        </div>
+        <div>
+            <label for="okres">Okres spłaty (w latach):</label>
+            <input type="number" id="okres" name="okres" required>
+        </div>
+        <div>
+            <label for="oprocentowanie">Oprocentowanie (w %):</label>
+            <input type="number" step="0.01" id="oprocentowanie" name="oprocentowanie" required>
+        </div>
+        <div>
+            <button type="submit">Oblicz ratę</button>
+        </div>
+    </form>
+
+    <div th:if="${showResult}" class="result-box">
+        <h3>Twoja przybliżona miesięczna rata wyniesie:</h3>
+        <p class="price" th:text="${#numbers.formatDecimal(rata, 0, 'WHITESPACE', 2, 'COMMA')} + ' PLN'"></p>
+    </div>
+</main>
+</body>
+</html>

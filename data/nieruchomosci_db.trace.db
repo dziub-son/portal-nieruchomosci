@@ -1,0 +1,12 @@
+2025-09-18 17:33:42.307931+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "IMAGE_URL CHARACTER VARYING(255)": "'https://www.google.com/imgres?q=mieszkanie&imgurl=https%3A%2F%2Fsimplicite.pl%2... (454)"
+Value too long for column "IMAGE_URL CHARACTER VARYING(255)": "'https://www.google.com/imgres?q=mieszkanie&imgurl=https%3A%2F%2Fsimplicite.pl%2... (454)"; SQL statement:
+insert into advertisement (area,user_id,city,description,image_url,phone_number,price,title,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-09-18 17:33:51.797116+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "IMAGE_URL CHARACTER VARYING(255)": "'https://www.google.com/imgres?q=mieszkanie&imgurl=https%3A%2F%2Fsimplicite.pl%2... (454)"
+Value too long for column "IMAGE_URL CHARACTER VARYING(255)": "'https://www.google.com/imgres?q=mieszkanie&imgurl=https%3A%2F%2Fsimplicite.pl%2... (454)"; SQL statement:
+insert into advertisement (area,user_id,city,description,image_url,phone_number,price,title,id) values (?,?,?,?,?,?,?,?,default) [22001-232]
+2025-09-18 17:34:30.564534+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "IMAGE_URL CHARACTER VARYING(255)": "'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmurapol.pl%2Fporadniki%2Fmies... (573)"
+Value too long for column "IMAGE_URL CHARACTER VARYING(255)": "'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmurapol.pl%2Fporadniki%2Fmies... (573)"; SQL statement:
+insert into advertisement (area,user_id,city,description,image_url,phone_number,price,title,id) values (?,?,?,?,?,?,?,?,default) [22001-232]

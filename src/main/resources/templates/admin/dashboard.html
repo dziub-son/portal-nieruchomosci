@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}"></head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main class="container">
+    <h1>Panel Administratora</h1>
+    <h2>Zarządzaj Użytkownikami</h2>
+    <table class="admin-table">
+        <thead>
+        <tr>
+            <th>ID</th><th>Nazwa użytkownika</th><th>Email</th><th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+                <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn-edit">Edytuj</a>
+                <form th:action="@{/admin/users/delete/{id}(id=${user.id})}" method="post" style="display:inline;" th:if="${user.username != 'admin'}">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <button type="submit" class="btn-delete" onclick="return confirm('Czy na pewno chcesz usunąć tego użytkownika?')">Usuń</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 style="margin-top: 40px;">Zarządzaj Ogłoszeniami</h2>
+    <table class="admin-table">
+        <thead>
+        <tr>
+            <th>ID</th><th>Tytuł</th><th>Miasto</th><th>Wystawiający</th><th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ad : ${advertisements}">
+            <td th:text="${ad.id}"></td>
+            <td th:text="${ad.title}"></td>
+            <td th:text="${ad.city}"></td>
+            <td th:text="${ad.author.username}"></td>
+            <td>
+                <a th:href="@{/admin/ads/edit/{id}(id=${ad.id})}" class="btn-edit">Edytuj</a>
+                <form th:action="@{/admin/ads/delete/{id}(id=${ad.id})}" method="post" style="display:inline;">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <button type="submit" class="btn-delete" onclick="return confirm('Czy na pewno chcesz usunąć to ogłoszenie?')">Usuń</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

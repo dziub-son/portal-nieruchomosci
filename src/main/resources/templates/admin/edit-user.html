@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}"></head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main class="container">
+    <h2>Edytuj Użytkownika</h2>
+    <form th:action="@{/admin/users/edit/{id}(id=${user.id})}" th:object="${user}" method="post" class="form-styled">
+        <div>
+            <label for="username">Nazwa użytkownika:</label>
+            <input type="text" id="username" th:field="*{username}" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" required>
+        </div>
+        <div>
+            <label for="password">Nowe hasło (wypełnij, aby zmienić):</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <button type="submit">Zapisz zmiany</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>
